@@ -26,7 +26,7 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context){
     final appBar = AppBar(
-      title: const Text("切換頁面"),
+      title: const Text("首頁"),
     );
 
     final btn = ElevatedButton(
@@ -34,7 +34,26 @@ class MyHomePage extends StatelessWidget {
         onPressed:()=>
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => SecondPage())),
+            PageRouteBuilder(
+                pageBuilder: (
+                    BuildContext context,
+                    Animation<double> animation,
+                    Animation<double> secondaryAnimation,
+                )=>SecondPage(),
+            transitionsBuilder: (
+                BuildContext context,
+                Animation<double> animation,
+                Animation<double> secondaryAnimation,
+                Widget child,
+            )=>SlideTransition(position: Tween(
+              begin: const Offset(1, 0),
+              end: Offset.zero,
+            ).animate(animation),
+              child: child,
+            ),
+              transitionDuration: const Duration(milliseconds: 300)
+            ),
+          ),
     );
 
     final btn2 = ElevatedButton(
@@ -42,14 +61,33 @@ class MyHomePage extends StatelessWidget {
       onPressed:()=>
           Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => thirdPage())),
+            PageRouteBuilder(
+                pageBuilder: (
+                    BuildContext context,
+                    Animation<double> animation,
+                    Animation<double> secondaryAnimation,
+                    )=>thirdPage(),
+                transitionsBuilder: (
+                    BuildContext context,
+                    Animation<double> animation,
+                    Animation<double> secondaryAnimation,
+                    Widget child,
+                    )=>FadeTransition(opacity: animation,
+                  child: child,
+                )
+            ),
+          ),
     );
 
     final widget = Container(
       child: Column(
         children: [
+          Image.network(
+            "https://upload.wikimedia.org/wikipedia/zh/5/55/Porsche_logo.png",
+          ),
+          Text("這是什麼都不介紹的APP",style: TextStyle(fontSize: 24),),
           btn,
-          btn2
+          btn2,
         ],
       ),
       alignment: Alignment.topCenter,

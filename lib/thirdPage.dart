@@ -24,8 +24,10 @@ class thirdPage extends StatelessWidget{
     final widget = Container(
       child: Column(
         children: [
+          Text("試試相信別人,世界更美好",style: TextStyle(fontSize: 24),),
           btn,
           btn2,
+          Image.network("https://www.chps.ntpc.edu.tw/app/index.php?Action=downloadfile&file=WVhSMFlXTm9MelkzTDNCMFlWOHpOREkyWHpjM01qSXhNREpmTURVd056TXVjRzVu&fname=DGGGVWWXYW441110HCLKKPJGRKB4OOLKDGUWSS20GGGDWWFCSSECVTPOUSSSPKPO")
         ],
       ),
       alignment: Alignment.topCenter,

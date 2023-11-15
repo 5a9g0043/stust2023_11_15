@@ -23,14 +23,18 @@ class SecondPage extends StatelessWidget{
     );
 
     final widget = Container(
-      child: Column(
-        children: [
-          btn2,
-          btn,
-        ],
-      ),
       alignment: Alignment.topCenter,
       padding: const EdgeInsets.all(30),
+      child: Column(
+        children: [
+          Text("就真的不相信硬要進來",style: TextStyle(fontSize: 24),),
+          btn2,
+          btn,
+          Image(image: AssetImage('image/images1.png'),
+          width: 300,
+          height: 300,)
+        ],
+      ),
     );
 
     final page = Scaffold(
